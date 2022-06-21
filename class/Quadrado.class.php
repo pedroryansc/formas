@@ -28,7 +28,8 @@
             $parametros = array(":lado"=>$this->getLado(), ":cor"=>$this->getCor(), ":tabuleiro"=>$this->getIdTabuleiro());
             return parent::executaComando($sql, $parametros);
         }
-        public static function listar($tipo, $info){
+
+        public static function listar($tipo = 0, $info = ""){
             $sql = "SELECT * FROM quadrado";
             if($tipo > 0 && $info <> ""){
                 switch($tipo){
@@ -44,6 +45,7 @@
                 $par = array();
             return parent::buscar($sql, $par);
         }
+
         public function editar(){
             // Montar SQL - Comando para inserir os dados
             $sql = "UPDATE quadrado
@@ -57,6 +59,7 @@
             // Executar e retornar o resultado
             return parent::executaComando($sql, $par);
         }
+        
         public function excluir(){
             // Montar SQL - Comando para inserir os dados
             $sql = "DELETE FROM quadrado WHERE idquadrado = :id";

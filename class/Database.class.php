@@ -62,7 +62,8 @@
             $comando = self::vinculaParametros($comando, $parametros);
             try{
                 return $comando->execute();
-            } catch(Exception $e){
+            } catch(PDOException $e){
+                // PDOException = PDO = MySQL
                 throw new Exception("Erro na execuçao do comando");
             }
         }
