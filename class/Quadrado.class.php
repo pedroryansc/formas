@@ -7,32 +7,15 @@
         private $cor;
         private $idTabuleiro;
         public function __construct($id, $lado, $cor, $tabuleiro){
-            $this->setIdQuadrado($id);
+            parent::__construct($id, $cor, $tabuleiro);
             $this->setLado($lado);
-            $this->setCor($cor);
-            $this->setIdTabuleiro($tabuleiro);
-        } 
-
-        public function setIdQuadrado($id){
-            $this->idQuadrado = $id;
         }
+
         public function setLado($lado){
             if($lado > 0)
                 $this->lado = $lado;
             else
                 throw new Exception("Valor do lado inválido: $lado");
-        }
-        public function setCor($cor){
-            if($cor <> "")
-                $this->cor = $cor;
-            else
-                throw new Exception("Cor inválida: $cor");
-        }
-        public function setIdTabuleiro($tabuleiro){
-            if($tabuleiro <> 0)
-                $this->idTabuleiro = $tabuleiro;
-            else
-                throw new Exception("Tabuleiro inválido: $tabuleiro");
         }
 
         public function getIdQuadrado(){ return $this->idQuadrado; }
@@ -40,13 +23,12 @@
         public function getCor(){ return $this->cor; }
         public function getIdTabuleiro(){ return $this->idTabuleiro; }
 
-        public static function salvar(){
+        public static function insere(){
             $sql = "INSERT INTO quadrado (lado, cor, tabuleiro_idtabuleiro) VALUES(:lado, :cor, :tabuleiro)";
             $parametros = array(":lado"=>$this->getLado(), ":cor"=>$this->getCor(), ":tabuleiro"=>$this->getIdTabuleiro());
-            return parent::insere($sql, $parametros);
+            return parent::executaComando($sql, $parametros);
         }
-        public function listar($tipo, $info){
-            $conexao = Conexao::getInstance();
+        public static function listar($tipo, $info){
             $sql = "SELECT * FROM quadrado";
             if($tipo > 0 && $info <> ""){
                 switch($tipo){
@@ -56,40 +38,33 @@
                     case(4): $sql .= " WHERE tabuleiro_idtabuleiro = :info"; break;
                 }
             }
-            $comando = $conexao->prepare($sql);
             if($tipo > 0 && $info <> "")
-                $comando->bindValue(":info", $info);
-            $comando->execute();
-            return $comando->fetchAll();
+                $par = array(":info"=>$info);
+            else
+                $par = array();
+            return parent::buscar($sql, $par);
         }
         public function editar(){
-            $conexao = Conexao::getInstance();
+            // Montar SQL - Comando para inserir os dados
             $sql = "UPDATE quadrado
                     SET lado = :lado, cor = :cor, tabuleiro_idtabuleiro = :tabuleiro
                     WHERE idquadrado = :id";
-            $comando = $conexao->prepare($sql);
-            $comando->bindValue(":lado", $this->getLado());
-            $comando->bindValue(":cor", $this->getCor());
-            $comando->bindValue(":tabuleiro", $this->getIdTabuleiro());
-            $comando->bindValue(":id", $this->getIdQuadrado());
-            if($comando->execute())
-                return $conexao->lastInsertId();
-            else{
-                return 0;
-                $comando->debugDumpParams();
-            }
+            // Vincular os parâmetros
+            $par = array(":lado"=>$this->getLado(),
+                        ":cor"=>$this->getCor(),
+                        ":tabuleiro"=>$this->getIdTabuleiro(),
+                        ":id"=>$this->getIdQuadrado());
+            // Executar e retornar o resultado
+            return parent::executaComando($sql, $par);
         }
         public function excluir(){
-            $conexao = Conexao::getInstance();
+            // Montar SQL - Comando para inserir os dados
             $sql = "DELETE FROM quadrado WHERE idquadrado = :id";
-            $comando = $conexao->prepare($sql);
-            $comando->bindParam(":id", $this->getIdQuadrado());
-            if($comando->execute())
-                return $conexao->lastInsertId();
-            else{
-                return 0;
-                $comando->debugDumpParams();
-            }
+            // Vincular os parâmetros
+            
+            $par = array(":id"=>$this->getIdQuadrado());
+            // Executar e retornar o resultado
+            return parent::executaComando($sql, $par);
         }
 
         public function area(){

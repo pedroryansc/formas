@@ -1,5 +1,5 @@
 <?php
-    class Quadrado{
+    class Database{
         private $idQuadrado;
         private $lado;
         private $cor;
@@ -40,7 +40,7 @@
 
         public static function iniciaConexao(){
             //Adicionar arquivo de conexão
-            require_once("Conexao.classs.php");
+            require_once("Conexao.class.php");
             //Abrir conexão com o banco
             return Conexao::getInstance();
         }
@@ -52,6 +52,27 @@
                 $comando->bindValue($chave, $valor);
             }
             return $comando;
+        }
+
+        //Insere, editar e excluir em uma única função:
+
+        public static function executaComando($sql, $parametros = array()){
+            $conexao = self::iniciaConexao();
+            $comando = $conexao->prepare($sql);
+            $comando = self::vinculaParametros($comando, $parametros);
+            try{
+                return $comando->execute();
+            } catch(Exception $e){
+                throw new Exception("Erro na execuçao do comando");
+            }
+        }
+
+        public static function buscar($sql, $parametros = array()){
+            $conexao = self::iniciaConexao();
+            $comando = $conexao->prepare($sql);
+            $comando = self::vinculaParametros($comando, $parametros);
+            $comando->execute();
+            return $comando->fetchAll();
         }
 
         /**
