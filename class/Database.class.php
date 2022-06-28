@@ -1,43 +1,5 @@
 <?php
     class Database{
-        private $idQuadrado;
-        private $lado;
-        private $cor;
-        private $idTabuleiro;
-        public function __construct($id, $lado, $cor, $tabuleiro){
-            $this->setIdQuadrado($id);
-            $this->setLado($lado);
-            $this->setCor($cor);
-            $this->setIdTabuleiro($tabuleiro);
-        }
-
-        public function setIdQuadrado($id){
-            $this->idQuadrado = $id;
-        }
-        public function setLado($lado){
-            if($lado > 0)
-                $this->lado = $lado;
-            else
-                throw new Exception("Valor do lado inválido: $lado");
-        }
-        public function setCor($cor){
-            if($cor <> "")
-                $this->cor = $cor;
-            else
-                throw new Exception("Cor inválida: $cor");
-        }
-        public function setIdTabuleiro($tabuleiro){
-            if($tabuleiro <> 0)
-                $this->idTabuleiro = $tabuleiro;
-            else
-                throw new Exception("Tabuleiro inválido: $tabuleiro");
-        }
-
-        public function getIdQuadrado(){ return $this->idQuadrado; }
-        public function getLado(){ return $this->lado; }
-        public function getCor(){ return $this->cor; }
-        public function getIdTabuleiro(){ return $this->idTabuleiro; }
-
         public static function iniciaConexao(){
             //Adicionar arquivo de conexão
             require_once("Conexao.class.php");
@@ -64,7 +26,7 @@
                 return $comando->execute();
             } catch(PDOException $e){
                 // PDOException = PDO = MySQL
-                throw new Exception("Erro na execuçao do comando: ".$e->getMessage());
+                throw new Exception("Erro na execução do comando: ".$e->getMessage());
             }
         }
 
