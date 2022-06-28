@@ -1,7 +1,9 @@
 <?php
     require_once "Database.class.php";
 
-    class Forma extends Database{
+    // abstract = "Incompleta". Utilizada em classes que servem para padronizar o código (template).
+
+    abstract class Forma extends Database{
         private $idQuadrado;
         private $cor;
         private $idTabuleiro;
@@ -38,5 +40,15 @@
         public function getLado(){ return $this->lado; }
         public function getCor(){ return $this->cor; }
         public function getIdTabuleiro(){ return $this->idTabuleiro; }
+    
+        // Métodos abstratos que devem implementados nas classes filhas
+
+        public abstract function desenha();
+        public abstract function area();
+        
+        public abstract function insere();
+        public abstract static function listar($tipo = 0, $info = "");
+        public abstract function editar();
+        public abstract function excluir();
     }
 ?>

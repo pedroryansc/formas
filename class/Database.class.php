@@ -64,7 +64,7 @@
                 return $comando->execute();
             } catch(PDOException $e){
                 // PDOException = PDO = MySQL
-                throw new Exception("Erro na execuçao do comando");
+                throw new Exception("Erro na execuçao do comando: ".$e->getMessage());
             }
         }
 
@@ -75,13 +75,17 @@
             $comando->execute();
             return $comando->fetchAll();
         }
+    }
+?>
+
+<?php
+    class Antigo{
 
         /**
         * Insere um quadrado no banco de dados
         * @access public
         * @return String
         * */
-
         public static function insere($sql, $parametros = array()){
             $conexao = self::iniciaConexao();
             $comando = $conexao->prepare($sql);
