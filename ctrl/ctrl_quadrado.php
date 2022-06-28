@@ -1,5 +1,5 @@
 <?php
-    require_once("../class/Quadrado.class.php");
+    require_once("../class/autoload.php");
 
     $acao = isset($_GET["acao"]) ? $_GET["acao"] : "";
     $id = isset($_GET["id"]) ? $_GET["id"] : 0;
