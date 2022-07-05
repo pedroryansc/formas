@@ -1,22 +1,38 @@
 <?php
     class Database{
+        
+        /**
+         * 1. Adicionar arquivo de conexão
+         * 2. Abrir conexão com o banco
+         * @access public
+         * @return String
+         */
+        
         public static function iniciaConexao(){
-            //Adicionar arquivo de conexão
-            require_once("Conexao.class.php");
-            //Abrir conexão com o banco
+            require_once("../conf/Conexao.php");
             return Conexao::getInstance();
         }
 
+        /**
+         * Vincular os parâmetros (Ex: [":lado"=>20])
+         * @access public
+         * @return String
+         */
+        
         public static function vinculaParametros($comando, $parametros = array()){
-            //Vincular os parâmetros
-            //[':lado'=>20]
             foreach($parametros as $chave=>$valor){
                 $comando->bindValue($chave, $valor);
             }
             return $comando;
         }
 
-        //Insere, editar e excluir em uma única função:
+        /**
+         * Insere, editar e excluir em uma única função
+         * 
+         * (PDOException = PDO = MySQL)
+         * @access public
+         * @return String
+         */
 
         public static function executaComando($sql, $parametros = array()){
             $conexao = self::iniciaConexao();
@@ -25,7 +41,6 @@
             try{
                 return $comando->execute();
             } catch(PDOException $e){
-                // PDOException = PDO = MySQL
                 throw new Exception("Erro na execução do comando: ".$e->getMessage());
             }
         }

@@ -25,8 +25,8 @@
 
         public static function insere(){
             $sql = "INSERT INTO quadrado (lado, cor, tabuleiro_idtabuleiro) VALUES(:lado, :cor, :tabuleiro)";
-            $parametros = array(":lado"=>$this->getLado(), ":cor"=>$this->getCor(), ":tabuleiro"=>$this->getIdTabuleiro());
-            return parent::executaComando($sql, $parametros);
+            $par = array(":lado"=>$this->getLado(), ":cor"=>$this->getCor(), ":tabuleiro"=>$this->getIdTabuleiro());
+            return parent::executaComando($sql, $par);
         }
 
         public static function listar($tipo = 0, $info = ""){
@@ -46,27 +46,28 @@
             return parent::buscar($sql, $par);
         }
 
+        /**
+         * 1. Montar SQL - Comando para inserir os dados
+         * 2. "Vincular" os parâmetros
+         * 3. Executar e retornar o resultado
+         * @access public
+         * @return String
+         */
+
         public function editar(){
-            // Montar SQL - Comando para inserir os dados
             $sql = "UPDATE quadrado
                     SET lado = :lado, cor = :cor, tabuleiro_idtabuleiro = :tabuleiro
                     WHERE idquadrado = :id";
-            // Vincular os parâmetros
             $par = array(":lado"=>$this->getLado(),
                         ":cor"=>$this->getCor(),
                         ":tabuleiro"=>$this->getIdTabuleiro(),
                         ":id"=>$this->getIdQuadrado());
-            // Executar e retornar o resultado
             return parent::executaComando($sql, $par);
         }
         
         public function excluir(){
-            // Montar SQL - Comando para inserir os dados
             $sql = "DELETE FROM quadrado WHERE idquadrado = :id";
-            // Vincular os parâmetros
-            
             $par = array(":id"=>$this->getIdQuadrado());
-            // Executar e retornar o resultado
             return parent::executaComando($sql, $par);
         }
 

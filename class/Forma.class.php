@@ -1,13 +1,13 @@
 <?php
     require_once "Database.class.php";
 
-    // abstract = "Incompleta". Utilizada em classes que servem para padronizar o código (template).
-
     /**
-    * Superclasse/Classe pai, a qual contém e define o que é comum para todas as subclasses.
-    * @access public
-    * @return String
-    */
+     * Superclasse/Classe pai, a qual contém e define o que é comum para todas as subclasses.
+     * 
+     * abstract = "Incompleta". Utilizada em classes que servem para padronizar o código (template).
+     * @access public
+     * @return String
+     */
 
     abstract class Forma extends Database{
         private $idQuadrado;
@@ -38,11 +38,6 @@
             else
                 throw new Exception("Tabuleiro inválido: $tabuleiro");
         }
-
-        public function getIdQuadrado(){ return $this->idQuadrado; }
-        public function getLado(){ return $this->lado; }
-        public function getCor(){ return $this->cor; }
-        public function getIdTabuleiro(){ return $this->idTabuleiro; }
     
         // Métodos abstratos que devem implementados nas classes filhas
 
