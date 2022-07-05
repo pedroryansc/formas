@@ -40,12 +40,12 @@
     
         // Métodos abstratos que devem implementados nas classes filhas
 
-        public abstract function desenha($cor);
+        public abstract function desenha();
         public abstract function area();
         
-        public abstract static function insere($lado, $cor, $tabuleiro);
+        public abstract function insere();
         public abstract static function listar($tipo = 0, $info = "");
-        public abstract function editar($id, $lado, $cor, $tabuleiro);
-        public abstract function excluir($id);
+        public abstract function editar();
+        public abstract function excluir();
     }
 ?>

@@ -7,7 +7,7 @@
     if($acao == "excluir"){
         try{
             $quad = new Quadrado($id, 1, 1, 1);
-            $quad->excluir($id);
+            $quad->excluir();
             header("location:../index/quadrado.php");
         } catch(Exception $e){
             echo "Erro ao excluir quadrado <br>".
@@ -25,7 +25,7 @@
         $quad = new Quadrado($id, $lado, $cor, $tabuleiro);
         if($id == 0){
             try{
-                $quad->insere($lado, $cor, $tabuleiro);
+                $quad->insere();
             } catch(Exception $e){
                 echo "Erro ao criar quadrado <br>".
                     "<br>".
@@ -33,7 +33,7 @@
             }
         } else{
             try{
-                $quad->editar($id, $lado, $cor, $tabuleiro);
+                $quad->editar();
             } catch(Exception $e){
                 echo "Erro ao editar os dados do quadrado <br>".
                     "<br>".
