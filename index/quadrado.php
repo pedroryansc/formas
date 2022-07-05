@@ -18,10 +18,14 @@
     <title>Quadrado</title>
 </head>
 <body>
+    <?php
+        include_once("../menu.html");
+    ?>
+    <br>
     <form action="../ctrl/ctrl_quadrado.php?id=<?php echo $id; ?>" method="post">
-        Lado: <input type="text" name="lado" value="<?php if($acao == "editar") echo $vetor[0]["lado"]; ?>">
+        Lado: <input type="text" name="lado" value="<?php if($acao == "editar") echo $vetor[0]["lado"]; ?>"><br>
         <br>
-        Cor: <input type="color" name="cor" value="<?php if($acao == "editar") echo $vetor[0]["cor"]; ?>">
+        Cor: <input type="color" name="cor" value="<?php if($acao == "editar") echo $vetor[0]["cor"]; ?>"><br>
         <br>
         Tabuleiro
         <select name="tabuleiro">
@@ -42,16 +46,18 @@
     <br><br>
     <form method="post">
         Pesquisar por: <br>
-        <input type="radio" name="tipo" value="1" <?php if($tipo == 1) echo "checked"; ?>> ID
-        <input type="radio" name="tipo" value="2" <?php if($tipo == 2) echo "checked"; ?>> Lado
-        <input type="radio" name="tipo" value="3" <?php if($tipo == 3) echo "checked"; ?>> Cor
-        <input type="radio" name="tipo" value="4" <?php if($tipo == 4) echo "checked"; ?>> Tabuleiro
         <br>
-        <input type="search" name="info" placeholder="pesquisa" value="<?php echo $info; ?>"><br>
+        <input type="radio" name="tipo" value="1" <?php if($tipo == 1) echo "checked"; ?>> ID <br>
+        <input type="radio" name="tipo" value="2" <?php if($tipo == 2) echo "checked"; ?>> Lado <br>
+        <input type="radio" name="tipo" value="3" <?php if($tipo == 3) echo "checked"; ?>> Cor <br>
+        <input type="radio" name="tipo" value="4" <?php if($tipo == 4) echo "checked"; ?>> Tabuleiro <br>
+        <br>
+        <input type="search" name="info" placeholder="Pesquisa" value="<?php echo $info; ?>"><br>
+        <br>
         <button type="submit">Pesquisar</button>
     </form>
     <br>
-    <table>
+    <table border="1">
         <thead>
             <tr>
                 <th>ID</th>

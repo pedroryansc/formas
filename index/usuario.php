@@ -18,27 +18,35 @@
     <title>Usuário</title>
 </head>
 <body>
+    <?php
+        include_once("../menu.html");
+    ?>
+    <br>
     <form action="../ctrl/ctrl_usuario.php?id=<?php echo $id; ?>" method="post">
-        Nome: <input type="text" name="nome" value="<?php if($acao == "editar") echo $vetor[0]["nome"]; ?>">
-        Login: <input type="text" name="login" value="<?php if($acao == "editar") echo $vetor[0]["login"]; ?>">
-        Senha <input type="text" name="senha" value="<?php if($acao == "editar") echo $vetor[0]["senha"]; ?>">
-        <br><br>
+        Nome: <input type="text" name="nome" value="<?php if($acao == "editar") echo $vetor[0]["nome"]; ?>"><br>
+        <br>
+        Login: <input type="text" name="login" value="<?php if($acao == "editar") echo $vetor[0]["login"]; ?>"><br>
+        <br>
+        Senha <input type="text" name="senha" value="<?php if($acao == "editar") echo $vetor[0]["senha"]; ?>"><br>
+        <br>
         <button type="submit" name="acao" value="salvar">Cadastrar</button>
     </form>
     <br>
     <br>
     <form method="post">
         Pesquisar por: <br>
-        <input type="radio" name="tipo" value="1" <?php if($tipo == 1) echo "checked"; ?>> ID
-        <input type="radio" name="tipo" value="2" <?php if($tipo == 2) echo "checked"; ?>> Nome
-        <input type="radio" name="tipo" value="3" <?php if($tipo == 3) echo "checked"; ?>> Login
-        <input type="radio" name="tipo" value="4" <?php if($tipo == 4) echo "checked"; ?>> Senha
         <br>
-        <input type="search" name="info" placeholder="pesquisa" value="<?php echo $info; ?>"><br>
+        <input type="radio" name="tipo" value="1" <?php if($tipo == 1) echo "checked"; ?>> ID <br>
+        <input type="radio" name="tipo" value="2" <?php if($tipo == 2) echo "checked"; ?>> Nome <br>
+        <input type="radio" name="tipo" value="3" <?php if($tipo == 3) echo "checked"; ?>> Login <br>
+        <input type="radio" name="tipo" value="4" <?php if($tipo == 4) echo "checked"; ?>> Senha <br>
+        <br>
+        <input type="search" name="info" placeholder="Pesquisa" value="<?php echo $info; ?>"><br>
+        <br>
         <button type="submit">Pesquisar</button>
     </form>
     <br>
-    <table>
+    <table border="1">
         <thead>
             <tr>
                 <th>ID</th>

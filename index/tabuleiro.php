@@ -18,21 +18,27 @@
     <title>Tabuleiro</title>
 </head>
 <body>
+    <?php
+        include_once("../menu.html");
+    ?>
+    <br>
     <form action="../ctrl/ctrl_tabuleiro.php?id=<?php echo $id; ?>" method="post">
-        <input type="text" name="lado" value="<?php if($acao == "editar") echo $vetor[0]["lado"]; ?>">
+        Lado: <input type="text" name="lado" value="<?php if($acao == "editar") echo $vetor[0]["lado"]; ?>">
         <button type="submit" name="acao" value="salvar">Criar</button>
     </form>
     <br><br>
     <form method="post">
         Pesquisar por: <br>
-        <input type="radio" name="tipo" value="1" <?php if($tipo == 1) echo "checked"; ?>> ID
-        <input type="radio" name="tipo" value="2" <?php if($tipo == 2) echo "checked"; ?>> Lado
         <br>
-        <input type="search" name="info" placeholder="pesquisa" value="<?php echo $info; ?>"><br>
+        <input type="radio" name="tipo" value="1" <?php if($tipo == 1) echo "checked"; ?>> ID <br>
+        <input type="radio" name="tipo" value="2" <?php if($tipo == 2) echo "checked"; ?>> Lado <br>
+        <br>
+        <input type="search" name="info" placeholder="Pesquisa" value="<?php echo $info; ?>"><br>
+        <br>
         <button type="submit">Pesquisar</button>
     </form>
     <br>
-    <table>
+    <table border="1">
         <thead>
             <tr>
                 <th>ID</th>
