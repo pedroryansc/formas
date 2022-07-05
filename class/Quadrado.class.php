@@ -23,9 +23,9 @@
         public function getCor(){ return $this->cor; }
         public function getIdTabuleiro(){ return $this->idTabuleiro; }
 
-        public static function insere(){
+        public static function insere($lado, $cor, $tabuleiro){
             $sql = "INSERT INTO quadrado (lado, cor, tabuleiro_idtabuleiro) VALUES(:lado, :cor, :tabuleiro)";
-            $par = array(":lado"=>$this->getLado(), ":cor"=>$this->getCor(), ":tabuleiro"=>$this->getIdTabuleiro());
+            $par = array(":lado"=>$lado, ":cor"=>$cor, ":tabuleiro"=>$tabuleiro);
             return parent::executaComando($sql, $par);
         }
 
@@ -54,20 +54,20 @@
          * @return String
          */
 
-        public function editar(){
+        public function editar($id, $lado, $cor, $tabuleiro){
             $sql = "UPDATE quadrado
                     SET lado = :lado, cor = :cor, tabuleiro_idtabuleiro = :tabuleiro
                     WHERE idquadrado = :id";
-            $par = array(":lado"=>$this->getLado(),
-                        ":cor"=>$this->getCor(),
-                        ":tabuleiro"=>$this->getIdTabuleiro(),
-                        ":id"=>$this->getIdQuadrado());
+            $par = array(":lado"=>$lado,
+                        ":cor"=>$cor,
+                        ":tabuleiro"=>$tabuleiro,
+                        ":id"=>$id);
             return parent::executaComando($sql, $par);
         }
         
-        public function excluir(){
+        public function excluir($id){
             $sql = "DELETE FROM quadrado WHERE idquadrado = :id";
-            $par = array(":id"=>$this->getIdQuadrado());
+            $par = array(":id"=>$id);
             return parent::executaComando($sql, $par);
         }
 
@@ -90,12 +90,12 @@
                     "Perímetro: ".$this->perimetro()." <br>".
                     "<br>";
         }
-        public function desenha(){
+        public function desenha($cor){
             return $this->__toString().
                     "<div style='
                         width: ".$this->getLado()."em;
                         height: ".$this->getLado()."em;
-                        background: ".$this->getCor().";
+                        background: ".$cor.";
                     '></div>";
         }
     }

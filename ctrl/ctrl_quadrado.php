@@ -1,5 +1,5 @@
 <?php
-    require_once("../class/autoload.php");
+    require_once("../autoload.php");
 
     $acao = isset($_GET["acao"]) ? $_GET["acao"] : "";
     $id = isset($_GET["id"]) ? $_GET["id"] : 0;
@@ -7,7 +7,7 @@
     if($acao == "excluir"){
         try{
             $quad = new Quadrado($id, 1, 1, 1);
-            $quad->excluir();
+            $quad->excluir($id);
             header("location:../index/quadrado.php");
         } catch(Exception $e){
             echo "Erro ao excluir quadrado <br>".
@@ -25,7 +25,7 @@
         $quad = new Quadrado($id, $lado, $cor, $tabuleiro);
         if($id == 0){
             try{
-                $quad->insere();
+                $quad->insere($lado, $cor, $tabuleiro);
             } catch(Exception $e){
                 echo "Erro ao criar quadrado <br>".
                     "<br>".
@@ -33,7 +33,7 @@
             }
         } else{
             try{
-                $quad->editar();
+                $quad->editar($id, $lado, $cor, $tabuleiro);
             } catch(Exception $e){
                 echo "Erro ao editar os dados do quadrado <br>".
                     "<br>".

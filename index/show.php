@@ -17,7 +17,7 @@
         if($obj == "quad"){
             $linha = listaQuadrado(1, $id);
             $quad = new Quadrado($linha[0]["idquadrado"], $linha[0]["lado"], $linha[0]["cor"], $linha[0]["tabuleiro_idtabuleiro"]);
-            echo $quad->desenha();
+            echo $quad->desenha($linha[0]["cor"]);
         } else{
             $linha = listaTabuleiro(1, $id);
             $tab = new Tabuleiro($linha[0]["idtabuleiro"], $linha[0]["lado"]);
