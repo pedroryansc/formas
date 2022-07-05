@@ -3,21 +3,24 @@
 
     // abstract = "Incompleta". Utilizada em classes que servem para padronizar o código (template).
 
+    /**
+    * Superclasse/Classe pai, a qual contém e define o que é comum para todas as subclasses.
+    * @access public
+    * @return String
+    */
+
     abstract class Forma extends Database{
         private $idQuadrado;
         private $cor;
         private $idTabuleiro;
-        
-        public static $contador = 0;
+        private static $contador = 0;
 
         public function __construct($id, $cor, $tabuleiro){
             $this->setIdQuadrado($id);
             $this->setCor($cor);
             $this->setIdTabuleiro($tabuleiro);
-
             self::$contador = self::$contador + 1;
-            
-            // Ao invés de "=", pode ser "+="
+            // Ou self::$contador += 1;
         }
 
         public function setIdQuadrado($id){
