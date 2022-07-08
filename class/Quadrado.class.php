@@ -18,10 +18,7 @@
                 throw new Exception("Valor do lado inválido: $lado");
         }
 
-        public function getIdQuadrado(){ return $this->idQuadrado; }
         public function getLado(){ return $this->lado; }
-        public function getCor(){ return $this->cor; }
-        public function getIdTabuleiro(){ return $this->idTabuleiro; }
 
         public function insere(){
             $sql = "INSERT INTO quadrado (lado, cor, tabuleiro_idtabuleiro) VALUES(:lado, :cor, :tabuleiro)";

@@ -38,6 +38,10 @@
                 throw new Exception("Tabuleiro inválido: $tabuleiro");
         }
     
+        public function getIdQuadrado(){ return $this->idQuadrado; }
+        public function getCor(){ return $this->cor; }
+        public function getIdTabuleiro(){ return $this->idTabuleiro; }
+
         // Métodos abstratos que devem implementados nas classes filhas
 
         public abstract function desenha();
