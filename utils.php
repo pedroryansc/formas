@@ -19,6 +19,12 @@
         return $lista;
     }
 
+    function listaRetangulo($tipo, $info){
+        $ret = new Retangulo(1, 1, 1, 1, 1);
+        $lista = $ret->listar($tipo, $info);
+        return $lista;
+    }
+
     function listaUsuario($tipo, $info){
         $user = new Usuario(1, 1, 1, 1);
         $lista = $user->listar($tipo, $info);

@@ -22,6 +22,10 @@
             $linha = listaTriangulo(1, $id);
             $tri = new Triangulo($linha[0]["idtriangulo"], $linha[0]["ladoA"], $linha[0]["ladoB"], $linha[0]["ladoC"], $linha[0]["cor"], $linha[0]["tabuleiro_idtabuleiro"]);
             echo $tri->desenha();
+        } else if($obj == "ret"){
+            $linha = listaRetangulo(1, $id);
+            $ret = new Retangulo($linha[0]["idretangulo"], $linha[0]["base"], $linha[0]["altura"], $linha[0]["cor"], $linha[0]["tabuleiro_idtabuleiro"]);
+            echo $ret->desenha();
         } else{
             $linha = listaTabuleiro(1, $id);
             $tab = new Tabuleiro($linha[0]["idtabuleiro"], $linha[0]["lado"]);
