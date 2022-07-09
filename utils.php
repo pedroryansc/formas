@@ -13,6 +13,12 @@
         return $lista;
     }
 
+    function listaTriangulo($tipo, $info){
+        $tri = new Triangulo(1, 1, 1, 1, 1, 1);
+        $lista = $tri->listar($tipo, $info);
+        return $lista;
+    }
+
     function listaUsuario($tipo, $info){
         $user = new Usuario(1, 1, 1, 1);
         $lista = $user->listar($tipo, $info);

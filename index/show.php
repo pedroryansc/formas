@@ -18,6 +18,10 @@
             $linha = listaQuadrado(1, $id);
             $quad = new Quadrado($linha[0]["idquadrado"], $linha[0]["lado"], $linha[0]["cor"], $linha[0]["tabuleiro_idtabuleiro"]);
             echo $quad->desenha();
+        } else if($obj == "tri"){
+            $linha = listaTriangulo(1, $id);
+            $tri = new Triangulo($linha[0]["idtriangulo"], $linha[0]["ladoA"], $linha[0]["ladoB"], $linha[0]["ladoC"], $linha[0]["cor"], $linha[0]["tabuleiro_idtabuleiro"]);
+            echo $tri->desenha();
         } else{
             $linha = listaTabuleiro(1, $id);
             $tab = new Tabuleiro($linha[0]["idtabuleiro"], $linha[0]["lado"]);
