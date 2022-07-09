@@ -1,5 +1,5 @@
 <?php
-    require_once("Forma.class.php");
+    require_once("../autoload.php");
 
     class Quadrado extends Forma{
         private $idQuadrado;

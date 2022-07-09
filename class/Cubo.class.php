@@ -1,5 +1,5 @@
 <?php
-    require_once "Quadrado.class.php";
+    require_once("../autoload.php");
 
     class Cubo extends Quadrado{
         private $idCubo;

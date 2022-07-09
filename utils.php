@@ -1,7 +1,5 @@
 <?php
-    require_once("class/Tabuleiro.class.php");
-    require_once("class/Quadrado.class.php");
-    require_once("class/Usuario.class.php");
+    require_once("autoload.php");
 
     function listaTabuleiro($tipo, $info){
         $tab = new Tabuleiro(1, 1);

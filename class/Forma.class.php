@@ -1,5 +1,5 @@
 <?php
-    require_once "Database.class.php";
+    require_once("../autoload.php");
 
     /**
      * Superclasse/Classe pai, a qual contém e define o que é comum para todas as subclasses.

@@ -1,5 +1,5 @@
 <?php
-    require_once("../class/Usuario.class.php");
+    require_once("../autoload.php");
 
     $acao = isset($_GET["acao"]) ? $_GET["acao"] : "";
     $id = isset($_GET["id"]) ? $_GET["id"] : 0;
