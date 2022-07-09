@@ -2,10 +2,7 @@
     require_once("../autoload.php");
 
     class Quadrado extends Forma{
-        private $idQuadrado;
         private $lado;
-        private $cor;
-        private $idTabuleiro;
         public function __construct($id, $lado, $cor, $tabuleiro){
             parent::__construct($id, $cor, $tabuleiro);
             $this->setLado($lado);
@@ -35,10 +32,8 @@
                     case(3): $sql .= " WHERE cor LIKE :info"; $info = "%".$info."%"; break;
                     case(4): $sql .= " WHERE tabuleiro_idtabuleiro = :info"; break;
                 }
-            }
-            if($tipo > 0 && $info <> "")
                 $par = array(":info"=>$info);
-            else
+            } else
                 $par = array();
             return parent::buscar($sql, $par);
         }
@@ -58,33 +53,33 @@
             $par = array(":lado"=>$this->getLado(),
                         ":cor"=>$this->getCor(),
                         ":tabuleiro"=>$this->getIdTabuleiro(),
-                        ":id"=>$this->getIdQuadrado());
+                        ":id"=>$this->getId());
             return parent::executaComando($sql, $par);
         }
         
         public function excluir(){
             $sql = "DELETE FROM quadrado WHERE idquadrado = :id";
-            $par = array(":id"=>$this->getIdQuadrado());
+            $par = array(":id"=>$this->getId());
             return parent::executaComando($sql, $par);
         }
 
-        public function area(){
+        public function calculaArea(){
             return pow($this->getLado(), 2);
         }
-        public function perimetro(){
+        public function calculaPerimetro(){
             return $this->getLado() * 4;
         }
 
         public function __toString(){
-            return "<a class='btn btn-success' href='quadrado.php'>Voltar à página de quadrados</a> <br>".
+            return "<a href='quadrado.php'>Voltar à página de quadrados</a> <br>".
                     "<br>".
                     "<header>".
-                        "<h2>Quadrado ".$this->getIdQuadrado()."</h2>".
+                        "<h2>Quadrado ".$this->getId()."</h2>".
                     "</header>".
                     "<br>".
                     "Lado: ".$this->getLado()." <br>".
-                    "Área: ".$this->area()." <br>".
-                    "Perímetro: ".$this->perimetro()." <br>".
+                    "Área: ".$this->calculaArea()." <br>".
+                    "Perímetro: ".$this->calculaPerimetro()." <br>".
                     "<br>";
         }
         public function desenha(){

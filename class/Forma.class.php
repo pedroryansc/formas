@@ -10,20 +10,20 @@
      */
 
     abstract class Forma extends Database{
-        private $idQuadrado;
+        private $id;
         private $cor;
         private $idTabuleiro;
         private static $contador = 0;
         public function __construct($id, $cor, $tabuleiro){
-            $this->setIdQuadrado($id);
+            $this->setId($id);
             $this->setCor($cor);
             $this->setIdTabuleiro($tabuleiro);
             self::$contador = self::$contador + 1;
             // Ou self::$contador += 1;
         }
 
-        public function setIdQuadrado($id){
-            $this->idQuadrado = $id;
+        public function setId($id){
+            $this->id = $id;
         }
         public function setCor($cor){
             if($cor <> "")
@@ -38,14 +38,14 @@
                 throw new Exception("Tabuleiro inválido: $tabuleiro");
         }
     
-        public function getIdQuadrado(){ return $this->idQuadrado; }
+        public function getId(){ return $this->id; }
         public function getCor(){ return $this->cor; }
         public function getIdTabuleiro(){ return $this->idTabuleiro; }
 
         // Métodos abstratos que devem implementados nas classes filhas
 
         public abstract function desenha();
-        public abstract function area();
+        public abstract function calculaArea();
         
         public abstract function insere();
         public abstract static function listar($tipo = 0, $info = "");

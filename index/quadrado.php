@@ -27,7 +27,7 @@
         <br>
         Cor: <input type="color" name="cor" value="<?php if($acao == "editar") echo $vetor[0]["cor"]; ?>"><br>
         <br>
-        Tabuleiro
+        Tabuleiro:
         <select name="tabuleiro">
             <?php
                 $lista = listaTabuleiro(0, 0);
