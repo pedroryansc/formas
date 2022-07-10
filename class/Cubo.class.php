@@ -89,14 +89,12 @@
                             min-height: 50vh;
                             perspective: 500px;
                         }
-            
                         .cube{
                             width: ".$this->getLado()."em;
                             height: ".$this->getLado()."em;
                             animation: rotate 20s infinite alternate;
                             transform-style: preserve-3d;
                         }
-            
                         .face{
                             background: ".$this->getCor().";
                             border: 1px solid;
@@ -109,23 +107,18 @@
                         .face--front{
                             transform: translateZ(".($this->getLado() / 2)."em);
                         }
-                
                         .face--right{
                             transform: rotateY(90deg) translateZ(".($this->getLado() / 2)."em);
                         }
-                        
                         .face--back{
                             transform: rotateY(180deg) translateZ(".($this->getLado() / 2)."em);
-                        }
-                            
+                        }  
                         .face--left{
                             transform: rotateY(-90deg) translateZ(".($this->getLado() / 2)."em);
                         }
-                        
                         .face--top{
                             transform: rotateX(90deg) translateZ(".($this->getLado() / 2)."em);
-                        }
-                            
+                        } 
                         .face--bottom{
                             transform: rotateX(-90deg) translateZ(".($this->getLado() / 2)."em);
                         }
@@ -134,17 +127,14 @@
                             from{
                                 transform: rotateX(-20deg) rotateY(-10deg);
                             }
-                        
                             50%{
                                 transform: rotateX(20deg) rotateY(320deg);
                             }
-                        
                             to{
                                 transform: rotateX(-20deg) rotateY(-20deg);
                             }
                         }
                     </style>
-                    
                     <div class='scene'>
                         <div class='cube'>
                             <div class='face face--front'></div>
