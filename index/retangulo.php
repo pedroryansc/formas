@@ -51,9 +51,9 @@
         <br>
         <input type="radio" name="tipo" value="1" <?php if($tipo == 1) echo "checked"; ?>> ID <br>
         <input type="radio" name="tipo" value="2" <?php if($tipo == 2) echo "checked"; ?>> Base <br>
-        <input type="radio" name="tipo" value="3" <?php if($tipo == 4) echo "checked"; ?>> Altura <br>
-        <input type="radio" name="tipo" value="4" <?php if($tipo == 3) echo "checked"; ?>> Cor <br>
-        <input type="radio" name="tipo" value="5" <?php if($tipo == 4) echo "checked"; ?>> Tabuleiro <br>
+        <input type="radio" name="tipo" value="3" <?php if($tipo == 3) echo "checked"; ?>> Altura <br>
+        <input type="radio" name="tipo" value="4" <?php if($tipo == 4) echo "checked"; ?>> Cor <br>
+        <input type="radio" name="tipo" value="5" <?php if($tipo == 5) echo "checked"; ?>> Tabuleiro <br>
         <br>
         <input type="search" name="info" placeholder="Pesquisa" value="<?php echo $info; ?>"><br>
         <br>
