@@ -26,7 +26,11 @@
             $linha = listaRetangulo(1, $id);
             $ret = new Retangulo($linha[0]["idretangulo"], $linha[0]["base"], $linha[0]["altura"], $linha[0]["cor"], $linha[0]["tabuleiro_idtabuleiro"]);
             echo $ret->desenha();
-        } else{
+        } else if($obj == "cir"){
+            $linha = listaCirculo(1, $id);
+            $cir = new Circulo($linha[0]["idcirculo"], $linha[0]["raio"], $linha[0]["cor"], $linha[0]["tabuleiro_idtabuleiro"]);
+            echo $cir->desenha();
+        }else{
             $linha = listaTabuleiro(1, $id);
             $tab = new Tabuleiro($linha[0]["idtabuleiro"], $linha[0]["lado"]);
             echo $tab->desenha();

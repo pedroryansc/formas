@@ -25,6 +25,12 @@
         return $lista;
     }
 
+    function listaCirculo($tipo, $info){
+        $cir = new Circulo(1, 1, 1, 1);
+        $lista = $cir->listar($tipo, $info);
+        return $lista;
+    }
+
     function listaUsuario($tipo, $info){
         $user = new Usuario(1, 1, 1, 1);
         $lista = $user->listar($tipo, $info);

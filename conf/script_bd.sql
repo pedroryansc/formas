@@ -28,6 +28,13 @@ CREATE TABLE retangulo(
     tabuleiro_idtabuleiro INT,
     FOREIGN KEY (tabuleiro_idtabuleiro) references tabuleiro (idtabuleiro));
 
+CREATE TABLE circulo(
+    idcirculo INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    raio decimal(6,2),
+    cor varchar(45),
+    tabuleiro_idtabuleiro INT,
+    FOREIGN KEY (tabuleiro_idtabuleiro) references tabuleiro (idtabuleiro));
+
 CREATE TABLE usuario(
     idusuario INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome varchar(250),
