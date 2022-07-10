@@ -35,6 +35,11 @@ CREATE TABLE circulo(
     tabuleiro_idtabuleiro INT,
     FOREIGN KEY (tabuleiro_idtabuleiro) references tabuleiro (idtabuleiro));
 
+CREATE TABLE cubo(
+    idcubo INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    quadrado_idquadrado INT,
+    FOREIGN KEY (quadrado_idquadrado) references quadrado (idquadrado));
+
 CREATE TABLE usuario(
     idusuario INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome varchar(250),

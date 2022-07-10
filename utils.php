@@ -31,6 +31,12 @@
         return $lista;
     }
 
+    function listaCubo($tipo, $info){
+        $cubo = new Cubo(1, 1, 1, 1, 1);
+        $lista = $cubo->listar($tipo, $info);
+        return $lista;
+    }
+
     function listaUsuario($tipo, $info){
         $user = new Usuario(1, 1, 1, 1);
         $lista = $user->listar($tipo, $info);

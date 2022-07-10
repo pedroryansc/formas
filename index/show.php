@@ -30,7 +30,12 @@
             $linha = listaCirculo(1, $id);
             $cir = new Circulo($linha[0]["idcirculo"], $linha[0]["raio"], $linha[0]["cor"], $linha[0]["tabuleiro_idtabuleiro"]);
             echo $cir->desenha();
-        }else{
+        } else if($obj == "cubo"){
+            $linha = listaCubo(1, $id);
+            $quadrado = listaQuadrado(1, $linha[0]["quadrado_idquadrado"]);
+            $cubo = new Cubo($linha[0]["idcubo"], $linha[0]["quadrado_idquadrado"], $quadrado[0]["lado"], $quadrado[0]["cor"], $quadrado[0]["tabuleiro_idtabuleiro"]);
+            echo $cubo->desenha();
+        } else{
             $linha = listaTabuleiro(1, $id);
             $tab = new Tabuleiro($linha[0]["idtabuleiro"], $linha[0]["lado"]);
             echo $tab->desenha();
