@@ -2,7 +2,7 @@
     require_once("../autoload.php");
 
     /**
-     * Superclasse/Classe pai, a qual contém e define o que é comum para todas as subclasses.
+     * Superclasse/Classe pai, a qual contém e define o que é comum para todas as subclasses/classes filhas.
      * 
      * abstract = "Incompleta". Utilizada em classes que servem para padronizar o código (template).
      * @access public
